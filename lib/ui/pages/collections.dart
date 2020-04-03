@@ -8,6 +8,7 @@ class Collections extends StatelessWidget {
         separatorBuilder: (context, index) {
           return Center(
             child: Container(
+              margin: EdgeInsets.only(top: 20.0, bottom: 30.0),
               width: 2,
               height: 50,
               child: Material(

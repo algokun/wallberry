@@ -18,16 +18,8 @@ class _NormalPageState extends State<NormalPage> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                Feather.grid,
-                color: Theme.of(context).primaryColor,
-              ),
-              onPressed: () {},
-              padding: EdgeInsets.all(10.0),
-            ),
-          ],
+          automaticallyImplyLeading: false,
+          title: Text("Walberry."),
         ),
         body: Stack(
           fit: StackFit.expand,
