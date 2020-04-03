@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:wallberry/ui/pages/collections.dart';
-import 'package:wallberry/ui/pages/dashboard.dart';
 import 'package:wallberry/ui/pages/favourites.dart';
+import 'package:wallberry/ui/pages/wallpapers.dart';
 
-class NormalPage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _NormalPageState createState() => _NormalPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _NormalPageState extends State<NormalPage> {
+class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
 
   @override
@@ -69,7 +69,7 @@ class _NormalPageState extends State<NormalPage> {
     return IndexedStack(
       index: currentIndex,
       children: <Widget>[
-        Dashboard(),
+        WallpaperGrid(),
         Collections(),
         Favourites(),
       ],
