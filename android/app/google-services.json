@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "576204441842",
+    "firebase_url": "https://wallberry-pro.firebaseio.com",
+    "project_id": "wallberry-pro",
+    "storage_bucket": "wallberry-pro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576204441842:android:68995b94a6c90f44e4286b",
+        "android_client_info": {
+          "package_name": "com.example.wallberry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576204441842-8k977jadqdnmgunk3ije0dl6qnmeirrl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVSJdvl9ari-2xrAlRSpbb90vowH7YcBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "576204441842-8k977jadqdnmgunk3ije0dl6qnmeirrl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
