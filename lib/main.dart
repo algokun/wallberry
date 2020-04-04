@@ -13,7 +13,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ViewModelProvider.withoutConsumer(
+    return ViewModelProvider<HomeViewModel>.withoutConsumer(
       viewModel: HomeViewModel(),
       reuseExisting: true,
       onModelReady: (model) => model.listenToPosts(),

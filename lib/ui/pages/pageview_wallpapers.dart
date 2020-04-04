@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider_architecture/provider_architecture.dart';
 import 'package:wallberry/ui/widgets/creation_aware_list_item.dart';
+import 'package:wallberry/ui/widgets/pageview_item.dart';
 import 'package:wallberry/viewmodels/home_viewmodel.dart';
 
 class WallpaperPageView extends ProviderWidget<HomeViewModel> {
@@ -14,32 +15,30 @@ class WallpaperPageView extends ProviderWidget<HomeViewModel> {
         onInit: () {
           model.setCurrentPage(currentIndex);
         },
-        child: Scaffold(
-            appBar: AppBar(
-              title: Text("View Page"),
-            ),
-            body: Container(
-              child: model.posts != null
-                  ? PageView.builder(
-                      controller: model.pageController,
-                      itemCount: model.posts.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return CreationAwareListItem(
-                          itemCreated: () {
-                            if (index % 20 == 0) {
-                              model.requestMoreData();
-                            }
-                          },
-                          child: Image.network(model.posts[index].url),
-                        );
+        child: Container(
+          child: model.posts != null
+              ? PageView.builder(
+                  controller: model.pageController,
+                  itemCount: model.posts.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return CreationAwareListItem(
+                      itemCreated: () {
+                        if (index % 20 == 0) {
+                          model.requestMoreData();
+                        }
                       },
-                    )
-                  : Center(
-                      child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation(Colors.lightBlue),
+                      child: PageViewItem(
+                        wallpaper: model.posts[index],
                       ),
-                    ),
-            )));
+                    );
+                  },
+                )
+              : Center(
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation(Colors.lightBlue),
+                  ),
+                ),
+        ));
   }
 }
 

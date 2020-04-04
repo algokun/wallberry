@@ -12,14 +12,14 @@ class HomeViewModel extends BaseModel {
     initialPage: 0,
   );
 
-  List<Wallpaper> _posts;
-  List<Wallpaper> get posts => _posts;
+  List<WallpaperModel> _posts;
+  List<WallpaperModel> get posts => _posts;
 
   void listenToPosts() {
     setBusy(true);
 
     _firestoreService.listenToPostsRealTime().listen((postsData) {
-      List<Wallpaper> updatedPosts = postsData;
+      List<WallpaperModel> updatedPosts = postsData;
       if (updatedPosts != null && updatedPosts.length > 0) {
         _posts = updatedPosts;
         notifyListeners();

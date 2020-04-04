@@ -8,12 +8,12 @@ class FirestoreService {
   final CollectionReference _imagesRef =
       Firestore.instance.collection('images');
 
-  final StreamController<List<Wallpaper>> _postsController =
-      StreamController<List<Wallpaper>>.broadcast();
+  final StreamController<List<WallpaperModel>> _postsController =
+      StreamController<List<WallpaperModel>>.broadcast();
 
   DocumentSnapshot _lastDocument;
 
-  List<List<Wallpaper>> _allPagedResults = List<List<Wallpaper>>();
+  List<List<WallpaperModel>> _allPagedResults = List<List<WallpaperModel>>();
 
   bool _hasMorePosts = true;
 
@@ -23,7 +23,7 @@ class FirestoreService {
       if (postDocumentSnapshot.documents.isNotEmpty) {
         return postDocumentSnapshot.documents
             .map((snapshot) =>
-                Wallpaper.fromMap(snapshot.data, snapshot.documentID))
+                WallpaperModel.fromMap(snapshot.data, snapshot.documentID))
             .where((mappedItem) => mappedItem.url != null)
             .toList();
       }
@@ -43,7 +43,8 @@ class FirestoreService {
   }
 
   void _requestPosts() {
-    var pagePostsQuery = _imagesRef.orderBy('timestamp').limit(20);
+    var pagePostsQuery =
+        _imagesRef.orderBy('timestamp', descending: true).limit(20);
 
     if (_lastDocument != null) {
       pagePostsQuery = pagePostsQuery.startAfterDocument(_lastDocument);
@@ -57,7 +58,7 @@ class FirestoreService {
       if (postsSnapshot.documents.isNotEmpty) {
         var posts = postsSnapshot.documents
             .map((snapshot) =>
-                Wallpaper.fromMap(snapshot.data, snapshot.documentID))
+                WallpaperModel.fromMap(snapshot.data, snapshot.documentID))
             .where((mappedItem) => mappedItem.url != null)
             .toList();
 
@@ -69,7 +70,8 @@ class FirestoreService {
           _allPagedResults.add(posts);
         }
 
-        var allPosts = _allPagedResults.fold<List<Wallpaper>>(List<Wallpaper>(),
+        var allPosts = _allPagedResults.fold<List<WallpaperModel>>(
+            List<WallpaperModel>(),
             (initialValue, pageItems) => initialValue..addAll(pageItems));
 
         // Add the posts onto the controller
