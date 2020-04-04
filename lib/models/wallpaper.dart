@@ -45,9 +45,9 @@ class Wallpaper {
 
   static Map<String, dynamic> toMap() {
     return {
-      'collection': 'Travel',
+      'collection': 'Textures',
       'url':
-          'https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          'https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress',
       'timestamp': DateTime.now().toString(),
       'loves': 2
     };

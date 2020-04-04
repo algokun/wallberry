@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:transparent_image/transparent_image.dart';
 import 'package:wallberry/models/wallpaper.dart';
 
 class WallpaperItem extends StatelessWidget {
@@ -19,12 +19,10 @@ class WallpaperItem extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          CachedNetworkImage(
+          FadeInImage.memoryNetwork(
             fit: BoxFit.cover,
-            imageUrl: wallpaper.url,
-            placeholder: (context, loading) {
-              return Center(child: CircularProgressIndicator());
-            },
+            image: wallpaper.url,
+            placeholder: kTransparentImage,
           ),
           Positioned(
             right: 5,

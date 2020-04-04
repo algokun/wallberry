@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:wallberry/constants/thumbs.dart';
+import 'package:wallberry/ui/widgets/collection_list.dart';
 
-class Collections extends StatelessWidget {
+class Collections extends StatelessWidget with AssetThumbs {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +21,11 @@ class Collections extends StatelessWidget {
         },
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      CollectionGridView(data[index]['name'])));
+            },
             child: Container(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -32,24 +38,24 @@ class Collections extends StatelessWidget {
                         Container(
                           width: MediaQuery.of(context).size.width / 3 - 50,
                           height: MediaQuery.of(context).size.height / 5,
-                          child: Image.network(
-                            "https://www.whats-on-netflix.com/wp-content/uploads/2020/02/money-heist-part-4-preview-netflix.jpg",
+                          child: Image.asset(
+                            data[index]['thumb01'],
                             fit: BoxFit.fitHeight,
                           ),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width / 3,
                           height: MediaQuery.of(context).size.height / 4,
-                          child: Image.network(
-                            "https://www.whats-on-netflix.com/wp-content/uploads/2020/02/money-heist-part-4-preview-netflix.jpg",
+                          child: Image.asset(
+                            data[index]['thumb02'],
                             fit: BoxFit.fitHeight,
                           ),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width / 3 - 50,
                           height: MediaQuery.of(context).size.height / 5,
-                          child: Image.network(
-                            "https://www.whats-on-netflix.com/wp-content/uploads/2020/02/money-heist-part-4-preview-netflix.jpg",
+                          child: Image.asset(
+                            data[index]['thumb03'],
                             fit: BoxFit.fitHeight,
                           ),
                         ),
@@ -60,7 +66,7 @@ class Collections extends StatelessWidget {
                     height: 20,
                   ),
                   Text(
-                    "Moodboard $index",
+                    data[index]['name'],
                     style: Theme.of(context).textTheme.headline,
                   ),
                   SizedBox(
@@ -71,7 +77,7 @@ class Collections extends StatelessWidget {
             ),
           );
         },
-        itemCount: 5,
+        itemCount: data.length,
       ),
     );
   }

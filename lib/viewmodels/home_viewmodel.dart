@@ -32,7 +32,6 @@ class HomeViewModel extends BaseModel {
   void requestMoreData() => _firestoreService.requestMoreData();
 
   void setCurrentPage(int index) {
-    print("Hello $index");
     pageController.jumpToPage(index);
     notifyListeners();
   }
