@@ -36,15 +36,19 @@ class FirestoreService {
     }
   }
 
-  Stream listenToPostsRealTime() {
+  Stream listenToPostsRealTime(bool isCollection, String collectionName) {
     // Register the handler for when the posts data changes
-    _requestPosts();
+    _requestPosts(isCollection, collectionName);
     return _postsController.stream;
   }
 
-  void _requestPosts() {
-    var pagePostsQuery =
-        _imagesRef.orderBy('timestamp', descending: true).limit(20);
+  void _requestPosts(bool isCollection, String collectionName) {
+    var pagePostsQuery = isCollection
+        ? _imagesRef
+            .where('collection', isEqualTo: collectionName)
+            .orderBy('timestamp', descending: true)
+            .limit(10)
+        : _imagesRef.orderBy('timestamp', descending: true).limit(10);
 
     if (_lastDocument != null) {
       pagePostsQuery = pagePostsQuery.startAfterDocument(_lastDocument);
@@ -81,10 +85,11 @@ class FirestoreService {
           _lastDocument = postsSnapshot.documents.last;
         }
 
-        _hasMorePosts = posts.length == 20;
+        _hasMorePosts = posts.length == 10;
       }
     });
   }
 
-  void requestMoreData() => _requestPosts();
+  void requestMoreData(bool isCollection, String collectionName) =>
+      _requestPosts(isCollection, collectionName);
 }

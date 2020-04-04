@@ -5,7 +5,7 @@ import 'package:wallberry/viewmodels/base_viewmodel.dart';
 
 import '../setup_locator.dart';
 
-class HomeViewModel extends BaseModel {
+class CollectionViewModel extends BaseModel {
   final FirestoreService _firestoreService = locator<FirestoreService>();
 
   PageController pageController = PageController(
@@ -15,10 +15,12 @@ class HomeViewModel extends BaseModel {
   List<WallpaperModel> _posts;
   List<WallpaperModel> get posts => _posts;
 
-  void listenToPosts() {
+  void listenToPosts(String collectionName) {
     setBusy(true);
 
-    _firestoreService.listenToPostsRealTime(false, "").listen((postsData) {
+    _firestoreService
+        .listenToPostsRealTime(true, collectionName)
+        .listen((postsData) {
       List<WallpaperModel> updatedPosts = postsData;
       if (updatedPosts != null && updatedPosts.length > 0) {
         _posts = updatedPosts;
@@ -29,7 +31,8 @@ class HomeViewModel extends BaseModel {
     });
   }
 
-  void requestMoreData() => _firestoreService.requestMoreData(false, "");
+  void requestMoreData(String collectionName) =>
+      _firestoreService.requestMoreData(true, collectionName);
 
   void setCurrentPage(int index) {
     pageController.jumpToPage(index);

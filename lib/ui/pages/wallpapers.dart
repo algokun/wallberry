@@ -17,7 +17,7 @@ class WallpaperGrid extends ProviderWidget<HomeViewModel> {
                 itemBuilder: (BuildContext context, int index) {
                   return CreationAwareListItem(
                     itemCreated: () {
-                      if (index % 20 == 0) {
+                      if (index % 10 == 0) {
                         model.requestMoreData();
                       }
                     },
