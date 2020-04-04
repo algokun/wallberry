@@ -3,36 +3,65 @@ import 'package:provider_architecture/provider_architecture.dart';
 import 'package:wallberry/ui/widgets/creation_aware_list_item.dart';
 import 'package:wallberry/viewmodels/home_viewmodel.dart';
 
-class WallpaperPageView extends StatelessWidget {
-  final PageController pageController;
-  const WallpaperPageView({Key key, this.pageController}) : super(key: key);
+class WallpaperPageView extends ProviderWidget<HomeViewModel> {
+  final int currentIndex;
+
+  WallpaperPageView({Key key, this.currentIndex}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, model) {
+    return StatefulWrapper(
+        onInit: () {
+          model.setCurrentPage(currentIndex);
+        },
+        child: Scaffold(
+            appBar: AppBar(
+              title: Text("View Page"),
+            ),
+            body: Container(
+              child: model.posts != null
+                  ? PageView.builder(
+                      controller: model.pageController,
+                      itemCount: model.posts.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return CreationAwareListItem(
+                          itemCreated: () {
+                            if (index % 20 == 0) {
+                              model.requestMoreData();
+                            }
+                          },
+                          child: Image.network(model.posts[index].url),
+                        );
+                      },
+                    )
+                  : Center(
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(Colors.lightBlue),
+                      ),
+                    ),
+            )));
+  }
+}
+
+class StatefulWrapper extends StatefulWidget {
+  final Function onInit;
+  final Widget child;
+  const StatefulWrapper({@required this.onInit, @required this.child});
+  @override
+  _StatefulWrapperState createState() => _StatefulWrapperState();
+}
+
+class _StatefulWrapperState extends State<StatefulWrapper> {
+  @override
+  void initState() {
+    super.initState();
+    if (widget.onInit != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => widget.onInit());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelProvider<HomeViewModel>.withConsumer(
-        viewModel: HomeViewModel(),
-        onModelReady: (model) => model.listenToPosts(),
-        builder: (context, model, child) => Container(
-            child: model.posts != null
-                ? PageView.builder(
-                    controller: pageController,
-                    itemCount: model.posts.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return CreationAwareListItem(
-                        itemCreated: () {
-                          if (index % 20 == 0) {
-                            model.requestMoreData();
-                          }
-                        },
-                        child: Image.network(model.posts[index].url),
-                      );
-                    },
-                  )
-                : Center(
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation(
-                          Theme.of(context).primaryColor),
-                    ),
-                  )));
+    return widget.child;
   }
 }
