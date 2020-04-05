@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           automaticallyImplyLeading: false,
-          title: Text("Walberry."),
+          title: Text("Wallberry."),
         ),
         body: Stack(
           fit: StackFit.expand,
@@ -49,8 +49,8 @@ class _HomePageState extends State<HomePage> {
                             icon: Icon(Feather.image),
                             title: Text('Collections')),
                         BottomNavigationBarItem(
-                            icon: Icon(Feather.heart),
-                            title: Text('Favourites')),
+                            icon: Icon(Feather.more_horizontal),
+                            title: Text('About')),
                       ]),
                 ),
               ),

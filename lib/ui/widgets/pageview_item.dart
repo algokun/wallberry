@@ -25,7 +25,10 @@ class PageViewItem extends StatelessWidget {
             top: 20,
             left: 20,
             child: IconButton(
-                icon: Icon(Feather.arrow_left_circle),
+                icon: Icon(
+                  Feather.arrow_left_circle,
+                  color: Colors.white,
+                ),
                 onPressed: () {
                   Navigator.pop(context);
                 }),

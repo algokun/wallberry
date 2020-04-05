@@ -1,6 +1,6 @@
-# wallberry
+# Wallberry
 
-A new Flutter project.
+Wallberry is being created to provide a new experience in wallpaper application. It follows modern design and it is easy to use but never compromises on quality of the wallpaper. The Whole Application is build with Flutter and Firebase.
 
 ## Getting Started
 

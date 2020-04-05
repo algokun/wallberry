@@ -28,6 +28,7 @@ dependencies:
   scoped_model: ^1.0.1
   get_it: ^4.0.1
   provider_architecture: ^1.0.6
+  url_launcher: ^5.4.2
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,7 @@ flutter:
     - assets/thumbs/cars/01.jpeg
     - assets/thumbs/cars/02.jpeg
     - assets/thumbs/cars/03.jpeg
+    - assets/images/author.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
