@@ -37,10 +37,7 @@ class CollectionGridView extends StatelessWidget {
                     },
                   )
                 : Center(
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation(
-                          Theme.of(context).primaryColor),
-                    ),
+                    child: CircularProgressIndicator(),
                   )),
       ),
     );

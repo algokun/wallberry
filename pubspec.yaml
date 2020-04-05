@@ -54,9 +54,6 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/thumbs/films/01.jpeg
-    - assets/thumbs/films/02.jpeg
-    - assets/thumbs/films/03.jpeg
     - assets/thumbs/nature/01.jpeg
     - assets/thumbs/nature/02.jpeg
     - assets/thumbs/nature/03.jpeg
@@ -66,6 +63,12 @@ flutter:
     - assets/thumbs/travel/01.jpeg
     - assets/thumbs/travel/02.jpeg
     - assets/thumbs/travel/03.jpeg
+    - assets/thumbs/tech/01.jpeg
+    - assets/thumbs/tech/02.jpeg
+    - assets/thumbs/tech/03.jpeg
+    - assets/thumbs/cars/01.jpeg
+    - assets/thumbs/cars/02.jpeg
+    - assets/thumbs/cars/03.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

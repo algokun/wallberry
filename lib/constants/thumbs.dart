@@ -7,10 +7,16 @@ mixin AssetThumbs {
       "thumb03": "assets/thumbs/nature/03.jpeg",
     },
     {
-      'name': 'Films',
-      'thumb01': "assets/thumbs/films/01.jpeg",
-      "thumb02": "assets/thumbs/films/02.jpeg",
-      "thumb03": "assets/thumbs/films/03.jpeg",
+      'name': 'Tech',
+      'thumb01': "assets/thumbs/tech/01.jpeg",
+      "thumb02": "assets/thumbs/tech/02.jpeg",
+      "thumb03": "assets/thumbs/tech/03.jpeg",
+    },
+    {
+      'name': 'Cars',
+      'thumb01': "assets/thumbs/cars/01.jpeg",
+      "thumb02": "assets/thumbs/cars/02.jpeg",
+      "thumb03": "assets/thumbs/cars/03.jpeg",
     },
     {
       'name': 'Textures',
