@@ -37,10 +37,7 @@ class WallpaperGrid extends ProviderWidget<HomeViewModel> {
                 },
               )
             : Center(
-                child: CircularProgressIndicator(
-                  valueColor:
-                      AlwaysStoppedAnimation(Theme.of(context).primaryColor),
-                ),
+                child: CircularProgressIndicator(),
               ));
   }
 }

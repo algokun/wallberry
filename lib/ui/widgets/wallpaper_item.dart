@@ -16,7 +16,7 @@ class WallpaperItem extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: FadeInImage.memoryNetwork(
         fit: BoxFit.cover,
-        image: wallpaper.url,
+        image: wallpaper.thumburl,
         placeholder: kTransparentImage,
       ),
     );
