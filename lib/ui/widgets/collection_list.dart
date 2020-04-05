@@ -10,7 +10,7 @@ class CollectionGridView extends StatelessWidget {
   CollectionGridView(this.collectionName);
   @override
   Widget build(BuildContext context) {
-    return ViewModelProvider<CollectionViewModel>.withoutConsumer(
+    return ViewModelProvider<CollectionViewModel>.withConsumer(
       onModelReady: (model) => model.listenToPosts(collectionName),
       viewModel: CollectionViewModel(),
       builder: (context, model, child) => Scaffold(

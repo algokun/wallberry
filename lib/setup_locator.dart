@@ -6,7 +6,7 @@ import 'package:get_it/get_it.dart';
 GetIt locator = GetIt.instance;
 
 void setupLocator() {
-  locator.registerLazySingleton(() => FirestoreService());
+  locator.registerFactory(() => FirestoreService());
 
   locator.registerLazySingleton(() => HomeViewModel());
 }
