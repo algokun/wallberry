@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:transparent_image/transparent_image.dart';
 import 'package:wallberry/models/wallpaper.dart';
 
 class PageViewItem extends StatelessWidget {
@@ -13,10 +12,15 @@ class PageViewItem extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          FadeInImage.memoryNetwork(
-              fit: BoxFit.cover,
-              placeholder: kTransparentImage,
-              image: wallpaper.url),
+          Image.network(
+            wallpaper.url,
+            fit: BoxFit.cover,
+            loadingBuilder: (context, child, extent) {
+              if (extent == null) return child;
+
+              return Center(child: CircularProgressIndicator());
+            },
+          ),
           Positioned(
             top: 20,
             left: 20,

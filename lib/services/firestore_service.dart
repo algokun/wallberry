@@ -46,7 +46,7 @@ class FirestoreService {
     var pagePostsQuery = isCollection
         ? _imagesRef
             .where('collection', isEqualTo: collectionName)
-            .orderBy('timestamp', descending: true)
+            .orderBy('timestamp', descending: false)
             .limit(10)
         : _imagesRef.orderBy('timestamp', descending: true).limit(10);
 
